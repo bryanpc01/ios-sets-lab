@@ -13,6 +13,20 @@ Input: heights of trees below:
 Output:
 `169.375`
 
+```swift
+let heightsOfTrees = [161,182,161,154,176,170,167,171,170,174]
+let setOfHeightsOfTrees = Set(heightsOfTrees)
+
+var runningSum = 0.0
+
+for value in setOfHeightsOfTrees {
+    runningSum += Double(value)
+}
+
+let average = runningSum / Double(setOfHeightsOfTrees.count)
+
+print("The average height of all the distinct trees is: \(average)")
+```
 
 ## Question 2
 
@@ -21,6 +35,21 @@ Determine if a String is a pangram. A pangram is a string that contains every le
  e.g `"The quick brown fox jumps over the lazy dog"` is a pangram
  e.g `"The quick brown fox jumped over the lazy dog"` is NOT a pangram
 
+```swift
+let inputString = "The quick brown fox jumps over the lazy dog"
+let numberOfLettersInAlphabet = 26
+let alphabet = Set("a b c d e f g h i j k l m n o p q r s t u v w x y z".components(separatedBy: " "))
+
+var inputSet = Set<String>()
+for word in inputString.lowercased().components(separatedBy: " ") {
+    for char in word {
+        inputSet.insert(String(char))
+    }
+}
+
+let isPangram = inputSet == alphabet
+isPangram ? print("The input string is a pangram.") : print("The input string is not a pangram.")
+```
 
 ## Question 3
 
@@ -40,6 +69,22 @@ You are given an array `nums` representing the data status of the set S after th
  Input: `nums = [2,2]`
  Output: `[2,1]`
 
+ ```swift
+ let nums = [1,2,2,4]
+var output = [Int]()
+var testNumber = 1
+
+for number in nums.sorted() {
+    if number == testNumber {
+        testNumber += 1
+    } else {
+        output = [number, testNumber].sorted()
+        break
+    }
+}
+print("Output array: \(output).")
+ ```
+
 
 ## Question 4
 
@@ -50,6 +95,11 @@ let arr1 = [2, 4, 5, 6, 8, 10, 12]
 let arr2 = [1, 2, 3, 4, 5, 6]
 let arr3 = [5, 6, 7, 8, 9, 10, 11, 12]
 let arr4 = [1, 3, 4, 5, 6, 7, 9]
+
+let bigSet = Set(arr1).union(Set(arr2)).union(Set(arr3)).union(Set(arr4))
+let output = Array(bigSet.sorted())
+
+print(output)
 ```
 
 
@@ -65,6 +115,11 @@ Perform the following set operations on the lists below:
 ```swift
 let list1: Set = [1, 3, 4, 6, 2, 7, 9]
 let list2: Set = [3, 7, 13, 10, 4]
+
+print("Intersection:", list1.intersection(list2).sorted())
+print("Symmetric Difference:", list1.symmetricDifference(list2).sorted())
+print("Union:", list1.union(list2).sorted())
+print("Subtracting list2 from list1:", list1.subtracting(list2).sorted())
 ```
 
 
@@ -83,13 +138,13 @@ spaceships.insert("Serenity")
 print(spaceships.count)
 ```
 
-- 3
-- 4
-- Nothing will be output
-- 0
-- This code will not compile
-- 1
-- This code will compile but crash
+- [x] 3
+- [ ] 4
+- [ ] Nothing will be output
+- [ ] 0
+- [ ] This code will not compile
+- [ ] 1
+- [ ] This code will compile but crash
 
 
 ## Question 7
@@ -112,8 +167,8 @@ if spaceships1.isSubset(of: spaceships2) {
 }
 ```
 
-- This code will compile but crash
-- "This is not a subset"
-- This code will not compile
-- "This is a subset"
-- Nothing will be output
+- [ ] This code will compile but crash
+- [ ] "This is not a subset"
+- [ ] This code will not compile
+- [x] "This is a subset"
+- [ ] Nothing will be output
